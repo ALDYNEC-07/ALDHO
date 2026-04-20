@@ -1,0 +1,68 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  min-height: 72px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.navPlaceholder {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-foreground);
+  cursor: pointer;
+}
+
+.badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-foreground);
+  color: var(--color-background);
+  font-size: 11px;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .navPlaceholder {
+    display: block;
+  }
+}

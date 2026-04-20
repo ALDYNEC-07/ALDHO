@@ -1,0 +1,49 @@
+.footer {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-48);
+  padding: var(--space-24) 0 var(--space-32);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.meta {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.brand,
+.label,
+.text {
+  margin: 0;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}

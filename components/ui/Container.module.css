@@ -1,0 +1,16 @@
+.container {
+  width: min(100% - 32px, var(--container-wide));
+  margin: 0 auto;
+}
+
+.default {
+  width: min(100% - 32px, var(--container-default));
+}
+
+.narrow {
+  width: min(100% - 32px, var(--container-narrow));
+}
+
+.wide {
+  width: min(100% - 32px, var(--container-wide));
+}

@@ -1,0 +1,58 @@
+.card {
+  border: 1px solid var(--color-border);
+  padding: var(--space-32);
+  background: var(--color-background);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-12);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.title {
+  margin: 0 0 var(--space-12);
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 0.95;
+  color: var(--color-foreground);
+  font-family: var(--font-display);
+}
+
+.text {
+  margin: 0;
+  max-width: 48ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-foreground);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+  margin-top: var(--space-24);
+}
+
+.note {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-24);
+}
+
+.noteLabel {
+  margin: 0 0 var(--space-8);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.noteText {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-foreground);
+}
