@@ -1,56 +1,15 @@
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
-import { LinkButton } from "@/components/ui/LinkButton";
-import { Section } from "@/components/ui/Section";
-import styles from "./page.module.css";
+import { BrandSection } from "@/components/homepage/BrandSection";
+import { HeroSection } from "@/components/homepage/HeroSection";
+import { HomepageStateNote } from "@/components/homepage/HomepageStateNote";
+import { QualitySection } from "@/components/homepage/QualitySection";
 
 export default function HomePage() {
   return (
     <>
-      <Section className={styles.heroSection}>
-        <Container>
-          <div className={styles.hero}>
-            <div className={styles.copy}>
-              <p className={styles.eyebrow}>ALDHO / homepage mvp</p>
-              <h1 className={styles.title}>ALDHO</h1>
-              <p className={styles.text}>
-                Проект сайта бренда одежды ALDHO. Главная страница собирается
-                поэтапно: сначала сильная статическая версия, потом детали и
-                только после этого motion.
-              </p>
-
-              <div className={styles.actions}>
-                <LinkButton href="#homepage-state">О проекте</LinkButton>
-                <Button variant="secondary" type="button" disabled>
-                  WhatsApp скоро
-                </Button>
-              </div>
-            </div>
-
-            <div className={styles.visual} aria-hidden="true">
-              <div className={styles.visualFrame}>
-                <span className={styles.visualLabel}>ALDHO</span>
-                <div className={styles.visualObject}>
-                  <span className={styles.visualObjectInner}>project</span>
-                </div>
-                <p className={styles.visualMeta}>Brand site placeholder</p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section id="homepage-state">
-        <Container width="narrow">
-          <div className={styles.note}>
-            <p className={styles.noteLabel}>Current state</p>
-            <p className={styles.noteText}>
-              Сейчас на главной собран только первый hero-шаг без анимаций и
-              без продуктовых секций ниже.
-            </p>
-          </div>
-        </Container>
-      </Section>
+      <HeroSection />
+      <HomepageStateNote />
+      <BrandSection />
+      <QualitySection />
     </>
   );
 }

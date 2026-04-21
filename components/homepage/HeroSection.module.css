@@ -1,4 +1,4 @@
-.heroSection {
+.section {
   display: flex;
   align-items: center;
   min-height: calc(100svh - 144px);
@@ -97,27 +97,6 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
-}
-
-.note {
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--space-24);
-}
-
-.noteLabel {
-  margin: 0 0 var(--space-8);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.noteText {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--color-foreground);
 }
 
 @media (min-width: 960px) {
