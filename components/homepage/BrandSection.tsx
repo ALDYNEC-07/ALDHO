@@ -5,7 +5,7 @@ import styles from "./BrandSection.module.css";
 
 export function BrandSection() {
   return (
-    <Section className={styles.section}>
+    <Section id="brand-section" className={styles.section}>
       <Container>
         <div className={styles.block}>
           <p className={styles.word}>ALDHO</p>
