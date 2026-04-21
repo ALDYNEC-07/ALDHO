@@ -6,6 +6,14 @@ type AddCartItemInput = Omit<CartItem, "quantity"> & {
   quantity?: number;
 };
 
+export function getCartItemId(
+  designId: string,
+  variantId: string,
+  size: CartItem["size"],
+): string {
+  return `${designId}-${variantId}-${size}`;
+}
+
 export function getCartTotalQuantity(items: CartItem[]): number {
   return items.reduce((total, item) => total + item.quantity, 0);
 }

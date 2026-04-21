@@ -4,6 +4,7 @@ import {
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
+import { CartProvider } from "@/components/cart/CartProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import "./globals.css";
@@ -39,11 +40,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${inter.variable} ${abrilFatface.variable} ${jetBrainsMono.variable}`}
       >
-        <div className="site-shell">
-          <Header />
-          <main className="site-main">{children}</main>
-          <Footer />
-        </div>
+        <CartProvider>
+          <div className="site-shell">
+            <Header />
+            <main className="site-main">{children}</main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

@@ -17,12 +17,20 @@ export function getCharacterThemeBySlug(slug: string): CharacterTheme | undefine
   return characterThemes.find((theme) => theme.slug === slug);
 }
 
+export function getCharacterThemeById(id: string): CharacterTheme | undefined {
+  return characterThemes.find((theme) => theme.id === id);
+}
+
 export function getCharacterThemeDesigns(characterId: string): ProductDesign[] {
   return productDesigns.filter((design) => design.characterId === characterId);
 }
 
 export function getProductDesigns(): ProductDesign[] {
   return productDesigns;
+}
+
+export function getProductDesignById(id: string): ProductDesign | undefined {
+  return productDesigns.find((design) => design.id === id);
 }
 
 export function getProductDesignBySlug(slug: string): ProductDesign | undefined {

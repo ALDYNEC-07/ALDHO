@@ -1,0 +1,161 @@
+.layout {
+  display: grid;
+  gap: var(--space-24);
+}
+
+.itemList {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.itemCard {
+  display: grid;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+}
+
+.itemHeader,
+.itemFooter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.itemTheme,
+.itemTitle,
+.itemPrice,
+.summaryLabel,
+.summaryValue,
+.summaryText,
+.total,
+.summaryNote,
+.emptyTitle,
+.emptyText {
+  margin: 0;
+}
+
+.itemTheme,
+.summaryLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.itemTitle {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 0.94;
+}
+
+.removeButton,
+.quantityButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  min-width: 36px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.metaChip,
+.quantityValue {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.itemPrice,
+.total {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summaryCard,
+.emptyState {
+  display: grid;
+  gap: var(--space-12);
+  align-content: flex-start;
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.summaryValue {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 10vw, 88px);
+  line-height: 0.9;
+}
+
+.summaryText,
+.summaryNote,
+.emptyText {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.summaryActions {
+  display: grid;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+}
+
+.backLink {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 9vw, 64px);
+  line-height: 0.92;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.38fr);
+    align-items: flex-start;
+  }
+
+  .summaryCard {
+    position: sticky;
+    top: 96px;
+  }
+}
