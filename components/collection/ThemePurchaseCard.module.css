@@ -1,0 +1,148 @@
+.designCard {
+  display: grid;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
+  background: #ffffff;
+}
+
+.visual {
+  position: relative;
+  min-height: 260px;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  background:
+    radial-gradient(circle at 50% 16%, rgba(0, 0, 0, 0.06), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f3efe8 100%);
+}
+
+.visualLabel {
+  position: absolute;
+  left: var(--space-16);
+  bottom: var(--space-16);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.designContent {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.designHeader {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.designTitle,
+.designText,
+.price,
+.metaLabel,
+.purchaseHint {
+  margin: 0;
+}
+
+.designTitle {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 0.94;
+}
+
+.designText {
+  max-width: 40ch;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.price {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.metaBlock {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.optionList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.optionButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: #ffffff;
+  color: var(--color-foreground);
+  gap: 10px;
+  cursor: pointer;
+}
+
+.optionButtonActive {
+  border-color: var(--color-foreground);
+  background: var(--color-surface);
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 10, 10, 0.16);
+}
+
+.optionLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.purchaseRow {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.purchaseHint {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+@media (min-width: 960px) {
+  .designCard {
+    grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+    gap: var(--space-24);
+    padding: var(--space-24);
+  }
+
+  .designHeader {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: flex-start;
+  }
+
+  .visual {
+    min-height: 420px;
+  }
+
+  .purchaseRow {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+  }
+}

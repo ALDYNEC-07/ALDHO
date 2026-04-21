@@ -66,8 +66,7 @@
   line-height: 0.95;
 }
 
-.summaryLabel,
-.metaLabel {
+.summaryLabel {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -88,130 +87,10 @@
   margin-top: var(--space-32);
 }
 
-.designCard {
-  display: grid;
-  gap: var(--space-16);
-  padding: var(--space-16);
-  border: 1px solid var(--color-border);
-  background: #ffffff;
-}
-
-.visual {
-  position: relative;
-  min-height: 260px;
-  border: 1px solid rgba(10, 10, 10, 0.08);
-  background:
-    radial-gradient(circle at 50% 16%, rgba(0, 0, 0, 0.06), transparent 26%),
-    linear-gradient(180deg, #ffffff 0%, #f3efe8 100%);
-}
-
-.visualLabel {
-  position: absolute;
-  left: var(--space-16);
-  bottom: var(--space-16);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.designContent {
-  display: grid;
-  gap: var(--space-16);
-}
-
-.designHeader {
-  display: grid;
-  gap: var(--space-12);
-}
-
-.designTitle,
-.designText,
-.price {
-  margin: 0;
-}
-
-.designTitle {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 5vw, 44px);
-  line-height: 0.94;
-}
-
-.designText {
-  max-width: 40ch;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.price {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.metaBlock {
-  display: grid;
-  gap: var(--space-12);
-}
-
-.variantList,
-.sizeList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-8);
-}
-
-.variantRow,
-.sizeChip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  background: #ffffff;
-}
-
-.variantRow {
-  gap: 10px;
-}
-
-.swatch {
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(10, 10, 10, 0.16);
-}
-
-.variantName,
-.sizeChip {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 @media (min-width: 960px) {
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(280px, 0.52fr);
     align-items: end;
     gap: var(--space-32);
-  }
-
-  .designCard {
-    grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
-    gap: var(--space-24);
-    padding: var(--space-24);
-  }
-
-  .designHeader {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-  }
-
-  .visual {
-    min-height: 420px;
   }
 }

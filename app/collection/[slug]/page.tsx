@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { ThemePurchaseCard } from "@/components/collection/ThemePurchaseCard";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { Section } from "@/components/ui/Section";
@@ -15,10 +16,6 @@ type ThemePageProps = {
     slug: string;
   }>;
 };
-
-function formatPrice(value: number): string {
-  return new Intl.NumberFormat("ru-RU").format(value);
-}
 
 export function generateStaticParams() {
   return getCharacterThemes().map((theme) => ({
@@ -75,56 +72,7 @@ export default async function ThemePage({ params }: ThemePageProps) {
 
         <div className={styles.designGrid}>
           {designs.map((design) => (
-            <article key={design.id} className={styles.designCard}>
-              <div className={styles.visual} aria-hidden="true">
-                <span className={styles.visualLabel}>{design.title}</span>
-              </div>
-
-              <div className={styles.designContent}>
-                <div className={styles.designHeader}>
-                  <div>
-                    <p className={styles.designTitle}>{design.title}</p>
-                    <p className={styles.designText}>{design.description}</p>
-                  </div>
-                  <p className={styles.price}>{formatPrice(design.price)} ₽</p>
-                </div>
-
-                <div className={styles.metaBlock}>
-                  <p className={styles.metaLabel}>Цвета</p>
-                  <div className={styles.variantList}>
-                    {design.variants.map((variant) => (
-                      <div key={variant.id} className={styles.variantRow}>
-                        <span
-                          className={styles.swatch}
-                          style={{ backgroundColor: variant.colorHex ?? "#ffffff" }}
-                          aria-hidden="true"
-                        />
-                        <span className={styles.variantName}>
-                          {variant.colorLabel}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className={styles.metaBlock}>
-                  <p className={styles.metaLabel}>Размеры</p>
-                  <div className={styles.sizeList}>
-                    {Array.from(
-                      new Set(
-                        design.variants.flatMap(
-                          (variant) => variant.availableSizes,
-                        ),
-                      ),
-                    ).map((size) => (
-                      <span key={size} className={styles.sizeChip}>
-                        {size}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
+            <ThemePurchaseCard key={design.id} design={design} theme={theme} />
           ))}
         </div>
       </Container>
