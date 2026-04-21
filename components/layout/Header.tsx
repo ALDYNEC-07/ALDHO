@@ -12,7 +12,7 @@ export function Header() {
           </Link>
 
           <div className={styles.navPlaceholder} aria-hidden="true">
-            Foundation shell
+            ALDHO project
           </div>
 
           <div className={styles.actions}>

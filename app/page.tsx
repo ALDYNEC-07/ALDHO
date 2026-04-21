@@ -10,16 +10,15 @@ export default function HomePage() {
       <Section>
         <Container width="narrow">
           <div className={styles.card}>
-            <p className={styles.eyebrow}>ALDHO / foundation</p>
-            <h1 className={styles.title}>Clean start.</h1>
+            <p className={styles.eyebrow}>ALDHO</p>
+            <h1 className={styles.title}>Проект ALDHO.</h1>
             <p className={styles.text}>
-              Базовый Next.js проект создан без Tailwind. Дальше можно
-              последовательно собирать структуру сайта на CSS Modules.
+              Здесь собирается сайт бренда одежды ALDHO.
             </p>
             <div className={styles.actions}>
-              <LinkButton href="#next-step">Следующий шаг</LinkButton>
+              <LinkButton href="#next-step">ALDHO</LinkButton>
               <Button variant="secondary" type="button">
-                Foundation mode
+                Project
               </Button>
             </div>
           </div>
@@ -29,9 +28,9 @@ export default function HomePage() {
       <Section id="next-step">
         <Container width="narrow">
           <div className={styles.note}>
-            <p className={styles.noteLabel}>Phase 1 / in progress</p>
+            <p className={styles.noteLabel}>ALDHO</p>
             <p className={styles.noteText}>
-              Следом собираем shell сайта: Header, Footer, кнопки и шрифты.
+              Текущий экран используется как базовая заглушка проекта.
             </p>
           </div>
         </Container>

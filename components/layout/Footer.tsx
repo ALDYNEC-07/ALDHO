@@ -8,12 +8,12 @@ export function Footer() {
         <div className={styles.inner}>
           <div>
             <p className={styles.brand}>ALDHO</p>
-            <p className={styles.text}>Minimal clothing brand website in progress.</p>
+            <p className={styles.text}>Проект сайта бренда одежды ALDHO.</p>
           </div>
 
           <div className={styles.meta}>
-            <p className={styles.label}>Launch phase</p>
-            <p className={styles.text}>Foundation / MVP / Motion</p>
+            <p className={styles.label}>ALDHO</p>
+            <p className={styles.text}>Project placeholder</p>
           </div>
         </div>
       </Container>
