@@ -7,30 +7,46 @@ import styles from "./page.module.css";
 export default function HomePage() {
   return (
     <>
-      <Section>
-        <Container width="narrow">
-          <div className={styles.card}>
-            <p className={styles.eyebrow}>ALDHO</p>
-            <h1 className={styles.title}>Проект ALDHO.</h1>
-            <p className={styles.text}>
-              Здесь собирается сайт бренда одежды ALDHO.
-            </p>
-            <div className={styles.actions}>
-              <LinkButton href="#next-step">ALDHO</LinkButton>
-              <Button variant="secondary" type="button">
-                Project
-              </Button>
+      <Section className={styles.heroSection}>
+        <Container>
+          <div className={styles.hero}>
+            <div className={styles.copy}>
+              <p className={styles.eyebrow}>ALDHO / homepage mvp</p>
+              <h1 className={styles.title}>ALDHO</h1>
+              <p className={styles.text}>
+                Проект сайта бренда одежды ALDHO. Главная страница собирается
+                поэтапно: сначала сильная статическая версия, потом детали и
+                только после этого motion.
+              </p>
+
+              <div className={styles.actions}>
+                <LinkButton href="#homepage-state">О проекте</LinkButton>
+                <Button variant="secondary" type="button" disabled>
+                  WhatsApp скоро
+                </Button>
+              </div>
+            </div>
+
+            <div className={styles.visual} aria-hidden="true">
+              <div className={styles.visualFrame}>
+                <span className={styles.visualLabel}>ALDHO</span>
+                <div className={styles.visualObject}>
+                  <span className={styles.visualObjectInner}>project</span>
+                </div>
+                <p className={styles.visualMeta}>Brand site placeholder</p>
+              </div>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section id="next-step">
+      <Section id="homepage-state">
         <Container width="narrow">
           <div className={styles.note}>
-            <p className={styles.noteLabel}>ALDHO</p>
+            <p className={styles.noteLabel}>Current state</p>
             <p className={styles.noteText}>
-              Текущий экран используется как базовая заглушка проекта.
+              Сейчас на главной собран только первый hero-шаг без анимаций и
+              без продуктовых секций ниже.
             </p>
           </div>
         </Container>

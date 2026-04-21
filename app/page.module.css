@@ -1,11 +1,23 @@
-.card {
-  border: 1px solid var(--color-border);
-  padding: var(--space-32);
-  background: var(--color-background);
+.heroSection {
+  display: flex;
+  align-items: center;
+  min-height: calc(100svh - 144px);
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-32);
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-16);
+  align-content: start;
 }
 
 .eyebrow {
-  margin: 0 0 var(--space-12);
+  margin: 0;
+  font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.4;
   letter-spacing: 0.12em;
@@ -14,18 +26,18 @@
 }
 
 .title {
-  margin: 0 0 var(--space-12);
-  font-size: clamp(36px, 6vw, 72px);
-  line-height: 0.95;
+  margin: 0;
+  font-size: clamp(72px, 20vw, 168px);
+  line-height: 0.88;
   color: var(--color-foreground);
   font-family: var(--font-display);
 }
 
 .text {
   margin: 0;
-  max-width: 48ch;
+  max-width: 42ch;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--color-foreground);
 }
 
@@ -33,7 +45,58 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-12);
-  margin-top: var(--space-24);
+  margin-top: var(--space-8);
+}
+
+.visual {
+  display: flex;
+}
+
+.visualFrame {
+  width: 100%;
+  min-height: 360px;
+  display: grid;
+  align-content: space-between;
+  gap: var(--space-24);
+  padding: var(--space-24);
+  border: 1px solid var(--color-border);
+  background:
+    radial-gradient(circle at top, rgba(0, 0, 0, 0.06), transparent 52%),
+    linear-gradient(180deg, #ffffff 0%, #f7f4ee 100%);
+}
+
+.visualLabel {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.visualObject {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.visualObjectInner {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 12vw, 84px);
+  line-height: 0.95;
+  color: var(--color-foreground);
+}
+
+.visualMeta {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
 
 .note {
@@ -55,4 +118,21 @@
   font-size: 15px;
   line-height: 1.6;
   color: var(--color-foreground);
+}
+
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    align-items: center;
+    gap: var(--space-48);
+  }
+
+  .visualFrame {
+    min-height: 560px;
+    padding: var(--space-32);
+  }
+
+  .visualObject {
+    min-height: 360px;
+  }
 }
