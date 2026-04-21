@@ -1,4 +1,5 @@
 import { BrandSection } from "@/components/homepage/BrandSection";
+import { CollectionTeaserSection } from "@/components/homepage/CollectionTeaserSection";
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HomepageStateNote } from "@/components/homepage/HomepageStateNote";
 import { LabelSection } from "@/components/homepage/LabelSection";
@@ -12,6 +13,7 @@ export default function HomePage() {
       <BrandSection />
       <QualitySection />
       <LabelSection />
+      <CollectionTeaserSection />
     </>
   );
 }
