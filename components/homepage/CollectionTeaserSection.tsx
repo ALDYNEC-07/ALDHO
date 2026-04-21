@@ -1,7 +1,8 @@
 import { getCharacterThemes } from "@/lib/catalog";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { LinkButton } from "@/components/ui/LinkButton";
 import { Section } from "@/components/ui/Section";
+import Link from "next/link";
 import styles from "./CollectionTeaserSection.module.css";
 
 export function CollectionTeaserSection() {
@@ -20,14 +21,18 @@ export function CollectionTeaserSection() {
             </p>
           </div>
 
-          <Button variant="secondary" type="button" disabled>
-            Коллекция скоро
-          </Button>
+          <LinkButton href="/collection" variant="secondary">
+            Вся коллекция
+          </LinkButton>
         </div>
 
         <div className={styles.grid}>
           {themes.map((theme) => (
-            <article key={theme.id} className={styles.card}>
+            <Link
+              key={theme.id}
+              href={`/collection/${theme.slug}`}
+              className={styles.card}
+            >
               <div className={styles.preview} aria-hidden="true">
                 <span className={styles.count}>{theme.designIds.length}</span>
               </div>
@@ -38,7 +43,7 @@ export function CollectionTeaserSection() {
                   {theme.subtitle ?? "Тема с несколькими дизайнами внутри."}
                 </p>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </Container>

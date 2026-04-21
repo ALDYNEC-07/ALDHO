@@ -47,6 +47,7 @@
 .card {
   display: grid;
   gap: var(--space-12);
+  transition: transform 0.2s ease;
 }
 
 .preview {
@@ -96,6 +97,10 @@
   font-size: 15px;
   line-height: 1.6;
   color: var(--color-muted);
+}
+
+.card:hover {
+  transform: translateY(-2px);
 }
 
 @media (min-width: 960px) {

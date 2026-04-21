@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { Section } from "@/components/ui/Section";
@@ -19,10 +18,10 @@ export function HeroSection() {
             </p>
 
             <div className={styles.actions}>
-              <LinkButton href="#homepage-state">О проекте</LinkButton>
-              <Button variant="secondary" type="button" disabled>
-                WhatsApp скоро
-              </Button>
+              <LinkButton href="/collection">Смотреть коллекцию</LinkButton>
+              <LinkButton href="#brand-section" variant="secondary">
+                О бренде
+              </LinkButton>
             </div>
           </div>
 
