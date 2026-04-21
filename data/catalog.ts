@@ -1,5 +1,5 @@
 import type { CharacterTheme, Collection, ProductDesign } from "@/types";
-import { PRODUCT_SIZES } from "./product-options";
+import { createProductVariants } from "./product-options";
 
 export const collections: Collection[] = [
   {
@@ -33,20 +33,7 @@ export const productDesigns: ProductDesign[] = [
     description: "Технический дизайн для проверки связки тема → дизайн → варианты.",
     price: 3500,
     coverImage: "/images/placeholders/example-design-01.jpg",
-    variants: [
-      {
-        id: "example-design-01-black",
-        colorLabel: "Black",
-        colorHex: "#111111",
-        availableSizes: PRODUCT_SIZES,
-      },
-      {
-        id: "example-design-01-white",
-        colorLabel: "White",
-        colorHex: "#F5F5F5",
-        availableSizes: PRODUCT_SIZES,
-      },
-    ],
+    variants: createProductVariants("example-design-01"),
   },
   {
     id: "example-design-02",
@@ -56,19 +43,6 @@ export const productDesigns: ProductDesign[] = [
     description: "Вторая техническая заглушка для проверки нескольких дизайнов внутри одной темы.",
     price: 3500,
     coverImage: "/images/placeholders/example-design-02.jpg",
-    variants: [
-      {
-        id: "example-design-02-black",
-        colorLabel: "Black",
-        colorHex: "#111111",
-        availableSizes: PRODUCT_SIZES,
-      },
-      {
-        id: "example-design-02-khaki",
-        colorLabel: "Khaki",
-        colorHex: "#7A7F63",
-        availableSizes: PRODUCT_SIZES,
-      },
-    ],
+    variants: createProductVariants("example-design-02"),
   },
 ];
