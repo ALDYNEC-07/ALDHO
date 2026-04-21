@@ -11,10 +11,6 @@ export function Header() {
             ALDHO
           </Link>
 
-          <div className={styles.navPlaceholder} aria-hidden="true">
-            ALDHO project
-          </div>
-
           <div className={styles.actions}>
             <button type="button" className={styles.actionButton} aria-label="Cart">
               Cart
