@@ -25,7 +25,7 @@ type LoadedManifest = SequenceManifest & {
 
 type Phase = "loading" | "autoplay" | "scroll";
 
-const AUTOPLAY_REAL_DURATION = HOMEPAGE_HERO_END;
+const AUTOPLAY_REAL_DURATION = HOMEPAGE_HERO_END / 2;
 const SCROLL_KICKOFF_PX = 4;
 const POSTER_FRAME = "frame-0001.jpg";
 
@@ -202,10 +202,10 @@ export function HomepageVideoStage() {
       const elapsed =
         (performance.now() - (autoplayStartRef.current ?? performance.now())) /
         1000;
-      const time = Math.min(elapsed, AUTOPLAY_REAL_DURATION);
-      applyOriginalTime(time);
+      const progress = Math.min(elapsed / AUTOPLAY_REAL_DURATION, 1);
+      applyOriginalTime(progress * HOMEPAGE_HERO_END);
 
-      if (elapsed >= AUTOPLAY_REAL_DURATION) {
+      if (progress >= 1) {
         return;
       }
 
