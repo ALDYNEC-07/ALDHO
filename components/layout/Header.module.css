@@ -21,6 +21,11 @@
   line-height: 1;
 }
 
+.brandHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .actions {
   display: flex;
   align-items: center;

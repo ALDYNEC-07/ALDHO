@@ -1,18 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/components/cart/CartProvider";
 import { Container } from "@/components/ui/Container";
 import styles from "./Header.module.css";
 
 export function Header() {
   const { totalQuantity } = useCart();
+  const pathname = usePathname();
+  const hideBrand = pathname === "/";
 
   return (
     <header className={styles.header}>
       <Container>
         <div className={styles.inner}>
-          <Link href="/" className={styles.brand}>
+          <Link
+            href="/"
+            className={`${styles.brand} ${hideBrand ? styles.brandHidden : ""}`}
+            aria-label="ALDHO home"
+          >
             ALDHO
           </Link>
 

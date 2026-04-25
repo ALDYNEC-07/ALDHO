@@ -23,6 +23,22 @@
     #f5f2ec;
 }
 
+.canvasShell {
+  position: absolute;
+  inset: 0;
+  background-image: var(--poster, none);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #f5f2ec;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .video {
   position: absolute;
   inset: 0;
@@ -128,7 +144,7 @@
 }
 
 .scrollSpace {
-  height: 440svh;
+  height: 600svh;
 }
 
 @media (min-width: 960px) {
