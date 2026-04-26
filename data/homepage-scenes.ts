@@ -8,51 +8,48 @@ export type HomepageScene = {
 };
 
 export const HOMEPAGE_VIDEO_DURATION = 22;
-export const HOMEPAGE_HERO_END = 7;
+export const HOMEPAGE_HERO_END = 6.5;
 
 export const homepageScenes: HomepageScene[] = [
   {
     id: "hero",
-    label: "Hero",
+    label: "ALDHO",
     title: "ALDHO",
-    description:
-      "Минималистичный вход в бренд: знак, ткань и силуэт работают как одно целое.",
+    description: "",
     start: 0,
-    end: 7,
+    end: 6.5,
   },
   {
     id: "brand",
-    label: "Brand",
-    title: "Бренд начинается с формы.",
+    label: "Алды · Чечня",
+    title: "Из посёлка, не из города.",
     description:
-      "Камера подводит к футболке мягко, без визуального шума. Внимание остается на вещи и знаке.",
-    start: 7,
+      "ALDHO начинается в Алды — в имени, в месте, в силуэте.",
+    start: 6.5,
     end: 11,
   },
   {
     id: "shirt-quality",
-    label: "Quality",
-    title: "Чистая ткань. Спокойная посадка.",
-    description:
-      "Отдельная сцена для материала: фактура, шов и поведение ткани под светом.",
+    label: "Материал",
+    title: "Плотный хлопок. Чистый крой.",
+    description: "Прямой силуэт, который не теряет форму.",
     start: 11,
     end: 14,
   },
   {
     id: "print-quality",
-    label: "Print",
-    title: "Принт держит характер.",
+    label: "Печать",
+    title: "Принт ложится в ткань.",
     description:
-      "Крупный план переносит фокус на качество нанесения и на то, как знак ложится на поверхность.",
+      "Шёлкография — краска уходит в хлопок, не остаётся сверху.",
     start: 14,
     end: 20,
   },
   {
     id: "collection-teaser",
-    label: "Teaser",
-    title: "Следующая история уже собирается.",
-    description:
-      "Финальные секунды работают как тизер следующего дизайна и следующего блока коллекции.",
+    label: "Коллекция I",
+    title: "Шейх Мансур. 1785.",
+    description: "Имя, которое не нужно объяснять.",
     start: 20,
     end: 22,
   },

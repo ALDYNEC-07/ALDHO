@@ -1,7 +1,13 @@
 .section {
   position: relative;
-  margin-top: -72px;
-  background: #f5f2ec;
+  margin-top: -56px;
+  background: var(--color-background);
+}
+
+@media (min-width: 960px) {
+  .section {
+    margin-top: -64px;
+  }
 }
 
 .stage {
@@ -9,18 +15,14 @@
   top: 0;
   min-height: 100svh;
   overflow: clip;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.94), rgba(245, 242, 236, 0.78) 48%, rgba(234, 228, 218, 0.88) 100%),
-    #f5f2ec;
+  background: var(--color-background);
 }
 
 .reducedStage {
   position: relative;
   min-height: 100svh;
   overflow: clip;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.94), rgba(245, 242, 236, 0.78) 48%, rgba(234, 228, 218, 0.88) 100%),
-    #f5f2ec;
+  background: var(--color-background);
 }
 
 .canvasShell {
@@ -30,7 +32,7 @@
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  background-color: #f5f2ec;
+  background-color: var(--color-background);
 }
 
 .canvas {
@@ -51,9 +53,7 @@
 .scrim {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.18) 28%, rgba(255, 255, 255, 0) 52%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, rgba(245, 242, 236, 0.86) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0) 68%, rgba(255, 255, 255, 0.7) 100%);
   pointer-events: none;
 }
 
@@ -77,36 +77,60 @@
 
 .copyBlock {
   display: grid;
-  gap: var(--space-12);
+  gap: var(--space-16);
   align-self: end;
   max-width: 28rem;
+  animation: copyEnter 0.5s ease forwards;
+}
+
+@keyframes copyEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sceneLabel {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.62);
+  color: rgba(10, 10, 10, 0.6);
+}
+
+.sceneLabelMark {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
 }
 
 .sceneTitle {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(56px, 15vw, 132px);
-  line-height: 0.92;
+  font-size: clamp(44px, 12vw, 104px);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   color: var(--color-foreground);
   text-wrap: balance;
 }
 
 .sceneText {
   margin: 0;
-  max-width: 34ch;
-  font-size: 15px;
-  line-height: 1.7;
-  color: rgba(10, 10, 10, 0.78);
+  max-width: 32ch;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(10, 10, 10, 0.72);
 }
 
 .scrollHint {
@@ -119,55 +143,17 @@
   color: rgba(10, 10, 10, 0.62);
 }
 
-.sceneRail {
-  display: grid;
-  gap: var(--space-12);
-  align-self: end;
-}
-
-.sceneRailItem {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-16);
-  padding-top: var(--space-8);
-  border-top: 1px solid rgba(10, 10, 10, 0.14);
-  opacity: 0.44;
-  transition: opacity 0.25s ease;
-}
-
-.sceneRailItemActive {
-  opacity: 1;
-}
-
-.sceneRailLabel,
-.sceneRailRange {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.5;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.72);
-}
-
 .scrollSpace {
   height: 450svh;
 }
 
 @media (min-width: 960px) {
   .overlay {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
-    align-items: end;
     padding-top: calc(72px + var(--space-32));
     padding-bottom: var(--space-32);
   }
 
   .copyBlock {
     max-width: 33rem;
-  }
-
-  .sceneRail {
-    justify-self: end;
-    width: min(100%, 320px);
   }
 }

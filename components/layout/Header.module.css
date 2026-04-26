@@ -27,54 +27,88 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-16);
-  min-height: 72px;
+  gap: var(--space-12);
+  min-height: 56px;
 }
 
 .brand {
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1;
-}
-
-.brandHidden {
-  opacity: 0;
-  visibility: hidden;
+  letter-spacing: 0.04em;
 }
 
 .actions {
   display: flex;
   align-items: center;
-  gap: var(--space-8);
+  gap: 2px;
+  margin-right: -8px;
 }
 
 .actionButton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-8);
-  min-height: 40px;
-  padding: 0 14px;
-  border: 1px solid var(--color-border);
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.88);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  background: transparent;
   color: var(--color-foreground);
   cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.burgerLine {
+  width: 16px;
+  height: 1px;
+  background: var(--color-foreground);
+  border-radius: var(--radius-pill);
 }
 
 .badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
   display: inline-grid;
   place-items: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 6px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
   border-radius: var(--radius-pill);
   background: var(--color-foreground);
   color: var(--color-background);
-  font-size: 11px;
+  font-family: var(--font-mono);
+  font-size: 10px;
   line-height: 1;
+}
+
+@media (min-width: 960px) {
+  .inner {
+    min-height: 64px;
+  }
+
+  .brand {
+    font-size: 22px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .burgerLine {
+    width: 18px;
+  }
 }

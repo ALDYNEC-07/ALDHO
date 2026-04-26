@@ -150,17 +150,8 @@ export function HomepageVideoStage() {
         if (cancelled) return;
         manifestRef.current = loaded;
 
-        const section = sectionRef.current;
-        const initialScrolled = section
-          ? clamp(
-              -section.getBoundingClientRect().top,
-              0,
-              Math.max(section.offsetHeight - window.innerHeight, 1),
-            )
-          : 0;
-
         const initialPhase: Phase =
-          initialScrolled > SCROLL_KICKOFF_PX ? "scroll" : "autoplay";
+          window.scrollY > SCROLL_KICKOFF_PX ? "scroll" : "autoplay";
         phaseRef.current = initialPhase;
         setPhase(initialPhase);
       })
@@ -261,7 +252,10 @@ export function HomepageVideoStage() {
       );
       const progress = clamp(scrolled / totalScrollable, 0, 1);
 
-      if (phaseRef.current === "autoplay" && scrolled > SCROLL_KICKOFF_PX) {
+      if (
+        phaseRef.current === "autoplay" &&
+        window.scrollY > SCROLL_KICKOFF_PX
+      ) {
         phaseRef.current = "scroll";
         setPhase("scroll");
       }
@@ -348,29 +342,17 @@ export function HomepageVideoStage() {
           className={`${styles.overlay} ${phase !== "scroll" ? styles.overlayHidden : ""}`}
         >
           {activeScene ? (
-            <div className={styles.copyBlock}>
-              <p className={styles.sceneLabel}>{activeScene.label}</p>
+            <div key={activeScene.id} className={styles.copyBlock}>
+              <p className={styles.sceneLabel}>
+                <span className={styles.sceneLabelMark} aria-hidden="true" />
+                {activeScene.label}
+              </p>
               <h1 className={styles.sceneTitle}>{activeScene.title}</h1>
-              <p className={styles.sceneText}>{activeScene.description}</p>
+              {activeScene.description ? (
+                <p className={styles.sceneText}>{activeScene.description}</p>
+              ) : null}
             </div>
           ) : null}
-
-          <div className={styles.sceneRail} aria-label="Homepage scenes">
-            {homepageScenes.map((scene) => {
-              const isActive = activeScene?.id === scene.id;
-              return (
-                <div
-                  key={scene.id}
-                  className={`${styles.sceneRailItem} ${isActive ? styles.sceneRailItemActive : ""}`}
-                >
-                  <span className={styles.sceneRailLabel}>{scene.label}</span>
-                  <span className={styles.sceneRailRange}>
-                    {scene.start}-{scene.end}s
-                  </span>
-                </div>
-              );
-            })}
-          </div>
         </Container>
       </div>
 
