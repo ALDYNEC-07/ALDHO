@@ -7,6 +7,22 @@
   backdrop-filter: blur(14px);
 }
 
+.headerHomeStage {
+  background: transparent;
+  border-bottom: 0;
+  backdrop-filter: none;
+  opacity: 0;
+  visibility: hidden;
+  animation: headerHomeReveal 0.6s ease 3s forwards;
+}
+
+@keyframes headerHomeReveal {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .inner {
   display: flex;
   align-items: center;

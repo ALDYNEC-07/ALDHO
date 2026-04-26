@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  HOMEPAGE_HERO_END,
   HOMEPAGE_VIDEO_DURATION,
   homepageScenes,
 } from "@/data/homepage-scenes";
@@ -25,7 +24,8 @@ type LoadedManifest = SequenceManifest & {
 
 type Phase = "loading" | "autoplay" | "scroll";
 
-const AUTOPLAY_REAL_DURATION = HOMEPAGE_HERO_END / 2;
+const AUTOPLAY_REAL_DURATION = 3;
+const AUTOPLAY_STOP_TIME = 6.5;
 const SCROLL_KICKOFF_PX = 4;
 const POSTER_FRAME = "frame-0001.jpg";
 
@@ -75,22 +75,41 @@ async function loadSequence(signal: AbortSignal): Promise<LoadedManifest> {
   const manifest = (await response.json()) as SequenceManifest;
   const revision = encodeURIComponent(manifest.generatedAt);
 
-  const images = await Promise.all(
-    manifest.files.map(
-      (file) =>
-        new Promise<HTMLImageElement>((resolve, reject) => {
-          if (signal.aborted) {
-            reject(new DOMException("aborted", "AbortError"));
-            return;
-          }
-          const image = new Image();
-          image.decoding = "async";
-          image.src = `${manifest.publicDirectory}/${file}?v=${revision}`;
-          image.onload = () => resolve(image);
-          image.onerror = () => reject(new Error(`Failed to load frame: ${file}`));
-        }),
-    ),
+  const images: HTMLImageElement[] = new Array(manifest.totalFrames);
+
+  const loadFrame = (index: number) =>
+    new Promise<void>((resolve, reject) => {
+      if (signal.aborted) {
+        reject(new DOMException("aborted", "AbortError"));
+        return;
+      }
+      const image = new Image();
+      image.decoding = "async";
+      image.src = `${manifest.publicDirectory}/${manifest.files[index]}?v=${revision}`;
+      image.onload = () => {
+        images[index] = image;
+        resolve();
+      };
+      image.onerror = () =>
+        reject(new Error(`Failed to load frame: ${manifest.files[index]}`));
+    });
+
+  const heroLastFrame = Math.ceil(
+    (manifest.totalFrames - 1) * (AUTOPLAY_STOP_TIME / HOMEPAGE_VIDEO_DURATION),
   );
+  const priorityCount = Math.min(heroLastFrame + 8, manifest.totalFrames);
+
+  await Promise.all(
+    Array.from({ length: priorityCount }, (_, index) => loadFrame(index)),
+  );
+
+  if (priorityCount < manifest.totalFrames) {
+    void Promise.all(
+      Array.from({ length: manifest.totalFrames - priorityCount }, (_, offset) =>
+        loadFrame(priorityCount + offset).catch(() => {}),
+      ),
+    );
+  }
 
   return { ...manifest, images };
 }
@@ -203,9 +222,11 @@ export function HomepageVideoStage() {
         (performance.now() - (autoplayStartRef.current ?? performance.now())) /
         1000;
       const progress = Math.min(elapsed / AUTOPLAY_REAL_DURATION, 1);
-      applyOriginalTime(progress * HOMEPAGE_HERO_END);
+      applyOriginalTime(progress * AUTOPLAY_STOP_TIME);
 
       if (progress >= 1) {
+        phaseRef.current = "scroll";
+        setPhase("scroll");
         return;
       }
 
@@ -247,8 +268,8 @@ export function HomepageVideoStage() {
 
       if (phaseRef.current === "scroll") {
         const time =
-          HOMEPAGE_HERO_END +
-          progress * (HOMEPAGE_VIDEO_DURATION - HOMEPAGE_HERO_END);
+          AUTOPLAY_STOP_TIME +
+          progress * (HOMEPAGE_VIDEO_DURATION - AUTOPLAY_STOP_TIME);
         applyOriginalTime(time);
       }
     };
@@ -323,15 +344,14 @@ export function HomepageVideoStage() {
           <div className={styles.scrim} aria-hidden="true" />
         </div>
 
-        <Container className={styles.overlay}>
+        <Container
+          className={`${styles.overlay} ${phase !== "scroll" ? styles.overlayHidden : ""}`}
+        >
           {activeScene ? (
             <div className={styles.copyBlock}>
               <p className={styles.sceneLabel}>{activeScene.label}</p>
               <h1 className={styles.sceneTitle}>{activeScene.title}</h1>
               <p className={styles.sceneText}>{activeScene.description}</p>
-              {phase === "autoplay" ? (
-                <p className={styles.scrollHint}>Прокрутка продолжит историю.</p>
-              ) : null}
             </div>
           ) : null}
 

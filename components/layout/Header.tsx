@@ -10,9 +10,11 @@ export function Header() {
   const { totalQuantity } = useCart();
   const pathname = usePathname();
   const hideBrand = pathname === "/";
+  const isHomeStage = pathname === "/";
+  const headerClassName = `${styles.header} ${isHomeStage ? styles.headerHomeStage : ""}`;
 
   return (
-    <header className={styles.header}>
+    <header className={headerClassName}>
       <Container>
         <div className={styles.inner}>
           <Link

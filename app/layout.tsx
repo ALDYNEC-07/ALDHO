@@ -37,6 +37,14 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ru">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/sequences/aldho-2x-15fps/frame-0001.jpg"
+          fetchPriority="high"
+        />
+      </head>
       <body
         className={`${inter.variable} ${abrilFatface.variable} ${jetBrainsMono.variable}`}
       >
