@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
-  Cormorant_Garamond,
+  El_Messiri,
+  Forum,
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
@@ -19,10 +20,16 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
+const elMessiri = El_Messiri({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-cormorant",
-  weight: ["400", "500", "600"],
+  variable: "--font-display-serif",
+  weight: ["400", "500", "600", "700"],
+});
+
+const forum = Forum({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-hero-display",
+  weight: "400",
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -46,7 +53,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body
-        className={`${inter.variable} ${cormorantGaramond.variable} ${jetBrainsMono.variable}`}
+        className={`${inter.variable} ${elMessiri.variable} ${forum.variable} ${jetBrainsMono.variable}`}
       >
         <CartProvider>
           <div className="site-shell">

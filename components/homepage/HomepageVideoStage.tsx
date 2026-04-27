@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   HOMEPAGE_VIDEO_DURATION,
   homepageScenes,
@@ -117,9 +117,11 @@ async function loadSequence(signal: AbortSignal): Promise<LoadedManifest> {
 function HeroBlock({
   title,
   introCompletedRef,
+  onScrollHint,
 }: {
   title: string;
-  introCompletedRef: React.MutableRefObject<boolean>;
+  introCompletedRef: React.RefObject<boolean>;
+  onScrollHint: () => void;
 }) {
   const [variantClass] = useState(() =>
     introCompletedRef.current
@@ -130,21 +132,26 @@ function HeroBlock({
   return (
     <div className={`${styles.heroBlock} ${variantClass}`}>
       <h1 className={styles.heroTitle}>{title}</h1>
-      <svg
+      <button
+        type="button"
         className={styles.scrollCue}
-        viewBox="0 0 40 22"
-        width="40"
-        height="22"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-label="Прокрутите вниз"
-        role="img"
+        onClick={onScrollHint}
+        aria-label="Перейти к разделу о бренде"
       >
-        <polyline points="3,4 20,18 37,4" />
-      </svg>
+        <svg
+          viewBox="0 0 40 22"
+          width="40"
+          height="22"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="3,4 20,18 37,4" />
+        </svg>
+      </button>
     </div>
   );
 }
@@ -172,6 +179,28 @@ export function HomepageVideoStage() {
       introCompletedRef.current = true;
     }, 3700);
     return () => window.clearTimeout(timer);
+  }, []);
+
+  const scrollToBrand = useCallback(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const brand = homepageScenes.find((scene) => scene.id === "brand");
+    if (!brand) return;
+
+    const totalScrollable = Math.max(
+      section.offsetHeight - window.innerHeight,
+      1,
+    );
+    const progress =
+      (brand.start - AUTOPLAY_STOP_TIME) /
+      (HOMEPAGE_VIDEO_DURATION - AUTOPLAY_STOP_TIME);
+    const sectionTopFromDoc =
+      section.getBoundingClientRect().top + window.scrollY;
+    const target =
+      sectionTopFromDoc + clamp(progress, 0, 1) * totalScrollable;
+
+    window.scrollTo({ top: target, behavior: "smooth" });
   }, []);
 
   useEffect(() => {
@@ -392,6 +421,7 @@ export function HomepageVideoStage() {
             <HeroBlock
               title={activeScene.title}
               introCompletedRef={introCompletedRef}
+              onScrollHint={scrollToBrand}
             />
           ) : activeScene ? (
             <div key={activeScene.id} className={styles.copyBlock}>
