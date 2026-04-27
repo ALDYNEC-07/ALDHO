@@ -114,6 +114,41 @@ async function loadSequence(signal: AbortSignal): Promise<LoadedManifest> {
   return { ...manifest, images };
 }
 
+function HeroBlock({
+  title,
+  introCompletedRef,
+}: {
+  title: string;
+  introCompletedRef: React.MutableRefObject<boolean>;
+}) {
+  const [variantClass] = useState(() =>
+    introCompletedRef.current
+      ? styles.heroBlockReturn
+      : styles.heroBlockFirst,
+  );
+
+  return (
+    <div className={`${styles.heroBlock} ${variantClass}`}>
+      <h1 className={styles.heroTitle}>{title}</h1>
+      <svg
+        className={styles.scrollCue}
+        viewBox="0 0 40 22"
+        width="40"
+        height="22"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-label="Прокрутите вниз"
+        role="img"
+      >
+        <polyline points="3,4 20,18 37,4" />
+      </svg>
+    </div>
+  );
+}
+
 export function HomepageVideoStage() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -130,6 +165,14 @@ export function HomepageVideoStage() {
     homepageScenes[0]?.id ?? "",
   );
   const [reducedMotion, setReducedMotion] = useState(false);
+  const introCompletedRef = useRef(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      introCompletedRef.current = true;
+    }, 3700);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -339,9 +382,18 @@ export function HomepageVideoStage() {
         </div>
 
         <Container
-          className={`${styles.overlay} ${phase !== "scroll" ? styles.overlayHidden : ""}`}
+          className={`${styles.overlay} ${
+            phase !== "scroll" && activeScene?.id !== "hero"
+              ? styles.overlayHidden
+              : ""
+          }`}
         >
-          {activeScene ? (
+          {activeScene?.id === "hero" ? (
+            <HeroBlock
+              title={activeScene.title}
+              introCompletedRef={introCompletedRef}
+            />
+          ) : activeScene ? (
             <div key={activeScene.id} className={styles.copyBlock}>
               <p className={styles.sceneLabel}>
                 <span className={styles.sceneLabelMark} aria-hidden="true" />

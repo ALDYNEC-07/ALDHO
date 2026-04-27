@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Abril_Fatface,
+  Cormorant_Garamond,
   Inter,
   JetBrains_Mono,
 } from "next/font/google";
@@ -19,10 +19,10 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const abrilFatface = Abril_Fatface({
-  subsets: ["latin"],
-  variable: "--font-abril-fatface",
-  weight: "400",
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-cormorant",
+  weight: ["400", "500", "600"],
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body
-        className={`${inter.variable} ${abrilFatface.variable} ${jetBrainsMono.variable}`}
+        className={`${inter.variable} ${cormorantGaramond.variable} ${jetBrainsMono.variable}`}
       >
         <CartProvider>
           <div className="site-shell">

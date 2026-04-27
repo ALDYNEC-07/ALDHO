@@ -8,16 +8,15 @@ export type HomepageScene = {
 };
 
 export const HOMEPAGE_VIDEO_DURATION = 22;
-export const HOMEPAGE_HERO_END = 6.5;
 
 export const homepageScenes: HomepageScene[] = [
   {
     id: "hero",
     label: "ALDHO",
-    title: "ALDHO",
+    title: "Оригинальные футболки из Алдов",
     description: "",
     start: 0,
-    end: 6.5,
+    end: 10.23,
   },
   {
     id: "brand",
@@ -25,7 +24,7 @@ export const homepageScenes: HomepageScene[] = [
     title: "Из посёлка, не из города.",
     description:
       "ALDHO начинается в Алды — в имени, в месте, в силуэте.",
-    start: 6.5,
+    start: 10.23,
     end: 11,
   },
   {

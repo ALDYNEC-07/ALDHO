@@ -19,7 +19,7 @@
   --space-96: 96px;
   --radius-pill: 999px;
   --font-sans: var(--font-inter), Arial, sans-serif;
-  --font-display: var(--font-abril-fatface), "Times New Roman", serif;
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
   --font-mono: var(--font-jetbrains-mono), "SFMono-Regular", Consolas,
     "Liberation Mono", Menlo, monospace;
 }
