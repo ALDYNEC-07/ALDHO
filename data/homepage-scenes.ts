@@ -13,8 +13,8 @@ export const homepageScenes: HomepageScene[] = [
   {
     id: "hero",
     label: "ALDHO",
-    title: "Оригинальные футболки из Алдов",
-    description: "",
+    title: "Оригинальные футболки",
+    description: "Одежда для тех, кому нечего доказывать",
     start: 0,
     end: 10.23,
   },
@@ -22,7 +22,7 @@ export const homepageScenes: HomepageScene[] = [
     id: "brand",
     label: "Алды · Чечня",
     title: "ALDHO — гордость для народов",
-    description: "Посёлок, который повлиял на ход истории Кавказа",
+    description: "Выходец из посёлка, который повлиял на ход истории Кавказа",
     start: 10.23,
     end: 13.55,
   },
@@ -37,9 +37,8 @@ export const homepageScenes: HomepageScene[] = [
   {
     id: "print-quality",
     label: "Печать",
-    title: "Принт ложится в ткань",
-    description:
-      "Шёлкография — краска уходит в хлопок, не остаётся сверху",
+    title: "Принт, который чувствуется",
+    description: "Плотный слой ложится поверх — держит цвет и форму",
     start: 16.62,
     end: 20,
   },

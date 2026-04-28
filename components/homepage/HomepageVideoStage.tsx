@@ -116,10 +116,12 @@ async function loadSequence(signal: AbortSignal): Promise<LoadedManifest> {
 
 function HeroBlock({
   title,
+  tagline,
   introCompletedRef,
   onScrollHint,
 }: {
   title: string;
+  tagline?: string;
   introCompletedRef: React.RefObject<boolean>;
   onScrollHint: () => void;
 }) {
@@ -132,6 +134,7 @@ function HeroBlock({
   return (
     <div className={`${styles.heroBlock} ${variantClass}`}>
       <h1 className={styles.heroTitle}>{title}</h1>
+      {tagline ? <p className={styles.heroTagline}>{tagline}</p> : null}
       <button
         type="button"
         className={styles.scrollCue}
@@ -420,6 +423,7 @@ export function HomepageVideoStage() {
           {activeScene?.id === "hero" ? (
             <HeroBlock
               title={activeScene.title}
+              tagline={activeScene.description}
               introCompletedRef={introCompletedRef}
               onScrollHint={scrollToBrand}
             />
