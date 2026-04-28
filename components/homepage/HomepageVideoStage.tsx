@@ -57,7 +57,7 @@ function drawFrame(
   context.clearRect(0, 0, targetWidth, targetHeight);
   context.scale(dpr, dpr);
 
-  const scale = Math.min(cssWidth / baseWidth, cssHeight / baseHeight);
+  const scale = Math.max(cssWidth / baseWidth, cssHeight / baseHeight);
   const drawWidth = baseWidth * scale;
   const drawHeight = baseHeight * scale;
   const offsetX = (cssWidth - drawWidth) / 2;
