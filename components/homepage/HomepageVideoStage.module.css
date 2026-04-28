@@ -13,14 +13,14 @@
 .stage {
   position: sticky;
   top: 0;
-  min-height: 100svh;
+  min-height: 100dvh;
   overflow: clip;
   background: var(--color-background);
 }
 
 .reducedStage {
   position: relative;
-  min-height: 100svh;
+  min-height: 100dvh;
   overflow: clip;
   background: var(--color-background);
 }
@@ -60,7 +60,7 @@
 .overlay {
   position: relative;
   z-index: 1;
-  min-height: 100svh;
+  min-height: 100dvh;
   display: grid;
   align-items: end;
   gap: var(--space-32);
