@@ -424,15 +424,14 @@ export function HomepageVideoStage() {
               onScrollHint={scrollToBrand}
             />
           ) : activeScene ? (
-            <div key={activeScene.id} className={styles.copyBlock}>
-              <p className={styles.sceneLabel}>
-                <span className={styles.sceneLabelMark} aria-hidden="true" />
-                {activeScene.label}
-              </p>
-              <h1 className={styles.sceneTitle}>{activeScene.title}</h1>
-              {activeScene.description ? (
-                <p className={styles.sceneText}>{activeScene.description}</p>
-              ) : null}
+            <div key={activeScene.id} className={styles.sceneBlock}>
+              <div className={styles.sceneCard}>
+                <p className={styles.sceneLabel}>{activeScene.label}</p>
+                <h2 className={styles.sceneTitle}>{activeScene.title}</h2>
+                {activeScene.description ? (
+                  <p className={styles.sceneText}>{activeScene.description}</p>
+                ) : null}
+              </div>
             </div>
           ) : null}
         </Container>
