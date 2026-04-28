@@ -16,7 +16,7 @@ export const homepageScenes: HomepageScene[] = [
     title: "Оригинальные футболки",
     description: "Одежда для тех, кому нечего доказывать",
     start: 0,
-    end: 10.23,
+    end: 8.3,
   },
   {
     id: "brand",
@@ -24,7 +24,7 @@ export const homepageScenes: HomepageScene[] = [
     title: "ALDHO — гордость для народов",
     description: "Выходец из посёлка, который повлиял на ход истории Кавказа",
     start: 10.23,
-    end: 13.55,
+    end: 12.55,
   },
   {
     id: "shirt-quality",
@@ -32,7 +32,7 @@ export const homepageScenes: HomepageScene[] = [
     title: "Плотный хлопок",
     description: "Силуэт, который не теряет форму",
     start: 13.55,
-    end: 16.62,
+    end: 15.62,
   },
   {
     id: "print-quality",
@@ -40,7 +40,7 @@ export const homepageScenes: HomepageScene[] = [
     title: "Принт, который чувствуется",
     description: "Плотный слой ложится поверх — держит цвет и форму",
     start: 16.62,
-    end: 20,
+    end: 19,
   },
   {
     id: "collection-teaser",

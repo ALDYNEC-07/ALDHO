@@ -174,6 +174,8 @@ export function HomepageVideoStage() {
   const [activeSceneId, setActiveSceneId] = useState<string>(
     homepageScenes[0]?.id ?? "",
   );
+  const [overlayActive, setOverlayActive] = useState(true);
+  const overlayActiveRef = useRef(true);
   const [reducedMotion, setReducedMotion] = useState(false);
   const introCompletedRef = useRef(false);
 
@@ -262,16 +264,21 @@ export function HomepageVideoStage() {
       }
     }
 
-    const nextScene =
-      homepageScenes.find((scene, index) => {
-        const isLast = index === homepageScenes.length - 1;
-        const inRange = t >= scene.start && t < scene.end;
-        return inRange || (isLast && t >= scene.start);
-      }) ?? homepageScenes[0];
+    const matchedScene = homepageScenes.find((scene, index) => {
+      const isLast = index === homepageScenes.length - 1;
+      const inRange = t >= scene.start && t < scene.end;
+      return inRange || (isLast && t >= scene.start);
+    });
 
-    if (nextScene && nextScene.id !== activeSceneIdRef.current) {
-      activeSceneIdRef.current = nextScene.id;
-      setActiveSceneId(nextScene.id);
+    const nextActive = matchedScene !== undefined;
+    if (nextActive !== overlayActiveRef.current) {
+      overlayActiveRef.current = nextActive;
+      setOverlayActive(nextActive);
+    }
+
+    if (matchedScene && matchedScene.id !== activeSceneIdRef.current) {
+      activeSceneIdRef.current = matchedScene.id;
+      setActiveSceneId(matchedScene.id);
     }
   }
 
@@ -415,7 +422,8 @@ export function HomepageVideoStage() {
 
         <Container
           className={`${styles.overlay} ${
-            phase !== "scroll" && activeScene?.id !== "hero"
+            !overlayActive ||
+            (phase !== "scroll" && activeScene?.id !== "hero")
               ? styles.overlayHidden
               : ""
           }`}

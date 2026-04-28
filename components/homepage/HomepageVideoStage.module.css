@@ -67,7 +67,7 @@
   padding-top: calc(72px + var(--space-24));
   padding-bottom: 12px;
   opacity: 1;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.4s ease;
 }
 
 .overlayHidden {
@@ -100,9 +100,6 @@
   display: grid;
   gap: 12px;
   width: 100%;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: sceneCardEnter 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s forwards;
 }
 
 .sceneCard::before {
@@ -126,9 +123,38 @@
   );
   z-index: -1;
   pointer-events: none;
+  opacity: 0;
+  animation: sceneCardBgEnter 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.1s
+    forwards;
 }
 
-@keyframes sceneCardEnter {
+.sceneCard > * {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.sceneCard > *:nth-child(1) {
+  animation: sceneChildEnter 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s
+    forwards;
+}
+
+.sceneCard > *:nth-child(2) {
+  animation: sceneChildEnter 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) 0.5s
+    forwards;
+}
+
+.sceneCard > *:nth-child(3) {
+  animation: sceneChildEnter 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) 0.7s
+    forwards;
+}
+
+@keyframes sceneCardBgEnter {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sceneChildEnter {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -137,7 +163,7 @@
 
 .heroBlock {
   display: grid;
-  gap: 14px;
+  gap: 0;
   justify-items: center;
   text-align: center;
   align-self: end;
@@ -165,22 +191,22 @@
 .heroTitle {
   margin: 0;
   font-family: var(--font-hero);
-  font-size: clamp(20px, 5.4vw, 34px);
+  font-size: clamp(26px, 6.6vw, 40px);
   font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0.012em;
-  color: rgba(10, 10, 10, 0.94);
+  line-height: 1.05;
+  letter-spacing: -0.003em;
+  color: rgba(10, 10, 10, 0.96);
   white-space: nowrap;
 }
 
 .heroTagline {
-  margin: -4px 0 0;
+  margin: 0;
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: clamp(11.5px, 3vw, 14px);
-  line-height: 1.4;
+  font-size: clamp(12.5px, 3.2vw, 15px);
+  line-height: 1.45;
   letter-spacing: 0.003em;
-  color: rgba(10, 10, 10, 0.62);
+  color: rgba(10, 10, 10, 0.6);
   white-space: nowrap;
 }
 
